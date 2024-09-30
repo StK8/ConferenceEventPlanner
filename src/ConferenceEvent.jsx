@@ -102,10 +102,14 @@ const ConferenceEvent = () => {
                             <tr key={index}>
                                 <td>{item.name}</td>
                                 <td>{item.cost}</td>
+                                <td>                                   {item.type === "meals" || item.numberOfPeople
+                                    ? ` For ${numberOfPeople} people`
+                                    : item.quantity}
+                                </td>
                                 <td>
-                                    {item.type === "meals" || item.numberOfPeople} 
+                                    {item.type === "meals" || item.numberOfPeople 
                                     ? `${item.cost * numberOfPeople}`
-                                    : `${item.cost * item.quantity}`
+                                    : `${item.cost * item.quantity}`}
                                 </td>
                             </tr>
                         ))}
@@ -324,7 +328,6 @@ const ConferenceEvent = () => {
                         <div className="total_amount_detail">
                             <TotalCost 
                                 totalCosts={totalCosts} 
-                                handleClick={handleToggleItems} 
                                 ItemsDisplay={() => <ItemsDisplay items={items} />} 
                             />
                         </div>
